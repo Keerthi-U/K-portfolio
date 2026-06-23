@@ -1,0 +1,34 @@
+.experience {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.exp-illustration img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.exp-content {
+  position: relative;
+}
+
+.exp-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #0d1117;
+  --bg-card: #111827;
+  --teal: #2dd4bf;
+  --teal-dark: #14b8a6;
+  --teal-bg: #1e3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --border: #1f2937;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
+.app {
+  padding-top: 65px;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 80px 0;
+  scroll-margin-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 48px;
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  color: #0a0a0f;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  background-color: var(--teal-dark);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-outline:hover {
+  background-color: rgba(45, 212, 191, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Decorative shapes */
+.shape-circle {
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.4;
+}
+
+.shape-square {
+  border: 2px solid var(--teal);
+  position: absolute;
+  opacity: 0.4;
+}
