@@ -15,8 +15,8 @@ const projects = [
   {
     id: 2,
     title: 'Tours App',
-    description: 'Browse and remove tour packages dynamically using React state.',
-    tags: ['React', 'API'],
+    description: 'A React.js tour booking web app displaying tour packages with pricing. Deployed via Netlify with CI/CD, and separately built an AWS CodePipeline (CodeBuild + S3) for automated deployment practice.',
+    tags: ['React', 'API', 'AWS (CodePipeline, CodeBuild, S3'],
     color: '#1a2a3a',
     emoji: '🌍',
     github: '#',
