@@ -12,16 +12,17 @@ const projects = [
     github: '#',
     live: 'https://birthday-count-reactjs.netlify.app/',
   },
-  {
-    id: 2,
-    title: 'Tours App',
-    description: 'A React.js tour booking web app displaying tour packages with pricing. Deployed via Netlify with CI/CD, and separately built an AWS CodePipeline (CodeBuild + S3) for automated deployment practice.',
-    tags: ['React', 'API', 'AWS (CodePipeline, CodeBuild, S3'],
-    color: '#1a2a3a',
-    emoji: '🌍',
-    github: '#',
-    live: 'https://tour-kjs.netlify.app/',
-  },
+{
+  id: 2,
+  title: 'Tours App',
+  description: 'A React.js tour booking web app displaying tour packages with pricing. Deployed via Netlify with CI/CD, and separately built an AWS CodePipeline (CodeBuild + S3) for automated deployment practice.',
+  tags: ['React', 'API', 'AWS (CodePipeline, CodeBuild, S3'],
+  color: '#1a2a3a',
+  emoji: '🌍',
+  github: '#',
+  live: 'https://tour-kjs.netlify.app/',
+  pipelineImage: '/images/aws-pipeline.png',   // 👈 add this line
+},
   {
     id: 3,
     title: 'Reviews Slider',
@@ -250,6 +251,7 @@ const ProjectsPage = () => {
                   <span className="pp-card-emoji">{project.emoji}</span>
                 </div>
                 <div className="pp-card-body">
+
                   <div className="pp-card-tags">
                     {project.tags.map(tag => (
                       <span key={tag} className="pp-tag">{tag}</span>
@@ -257,6 +259,12 @@ const ProjectsPage = () => {
                   </div>
                   <h3 className="pp-card-title">{project.title}</h3>
                   <p className="pp-card-desc">{project.description}</p>
+                  {project.pipelineImage && (
+                    <div className="pp-pipeline-shot">
+                      <img src={project.pipelineImage} alt="AWS CI/CD Pipeline" />
+                      <span className="pp-pipeline-caption">AWS CodePipeline — CI/CD deployment</span>
+                    </div>
+                  )}
                   <div className="pp-card-links">
                     <a href={project.github} target="_blank" rel="noreferrer" className="pp-link github">
                       GitHub
