@@ -173,6 +173,17 @@ const projects = [
   github: '#',
   live: 'https://password-generate-kjs.netlify.app/',
 },
+ {
+  id: 18,
+  title: 'Medicare Healthcare Management System',
+  description: 'A full-stack healthcare appointment management system where patients can book appointments, admins can manage doctors and patient details from the dashboard, and doctors receive appointment notifications through their separate portal login. Built with React, JSON Server API, and deployed using Vercel with backend API hosted on Render.',
+  tags: ['React', 'Context API', 'JSON Server', 'REST API', 'Vercel', 'Render'],
+  color: '#1a1a3a',
+  emoji: '🏥',
+  github: '#',
+  live: 'https://medi-care-git-main-vzkeerthi.vercel.app/'
+}
+  
   
 ]
 
