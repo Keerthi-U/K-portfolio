@@ -11,12 +11,20 @@ const skills = [
   { name: 'HTML',       icon: `${html}`, percent: 90 },
   { name: 'CSS',        icon: `${css}`, percent: 85 },
   { name: 'JavaScript', icon: `${js}`, percent: 80 },
-  { name: 'React js',      icon: `${reactjs}`, percent: 75 },
-  { name: 'Php',     icon: `${php}`, percent: 75 },
-  { name: 'MySql',        icon: `${mysql}`, percent: 70 },
+  { name: 'React JS',   icon: `${reactjs}`, percent: 75 },
+  { name: 'PHP',        icon: `${php}`, percent: 75 },
+  { name: 'MySQL',      icon: `${mysql}`, percent: 70 },
+  { name: 'AWS',        icon: '☁️', percent: 70 },
 ]
 
-const techBubbles = ['HTML', 'CSS', 'Javascript', 'Bootstrap', 'React js', 'PHP', 'Wordpress']
+const gitBubbles = ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'React JS', 'PHP', 'WordPress']
+const awsBubbles = ['S3', 'GitHub Actions', 'EC2', 'Lambda']
+const floatingBadges = [
+  { name: 'aws', left: 160, top: 90,  color: 'teal',   duration: 3.4 },
+  { name: 'S3',  left: 195, top: 115, color: 'orange', duration: 3.8 },
+  // add more here later, e.g.:
+  // { name: 'EC2', left: 130, top: 120, color: 'orange', duration: 3.2 },
+]
 
 const Skills = () => {
   const [animate, setAnimate] = useState(false)
@@ -27,7 +35,7 @@ const Skills = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setAnimate(true)
-          observer.disconnect() // only animate once
+          observer.disconnect()
         }
       },
       { threshold: 0.3 }
@@ -58,25 +66,56 @@ const Skills = () => {
               </div>
             ))}
           </div>
-          {/* <a
-            href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
-            className="btn-outline"
-            style={{ marginTop: '32px', display: 'inline-block', textDecoration: 'none' }}
-          >
-            Check on GITHUB
-          </a> */}
         </div>
 
-        <div className="skills-right">
-          <div className="bubbles-container">
-            <div className="bubble-center">Git</div>
-            {techBubbles.map((tech, i) => (
-              <div key={tech} className={`bubble bubble-${i}`}>{tech}</div>
-            ))}
+        {/* <div className="skills-right">
+          <div className="dual-orbits">
+           
+            <div className="orbit-wrap">
+              <div className="orbit-container orbit-git">
+                <div className="orbit-ring" />
+                    <div className="orbit-ring" />
+                <div className="orbit-center orbit-center-git">
+                  <span className="orbit-center-icon">🔀</span>
+                  <span className="orbit-center-label">Git</span>
+                </div>
+                {gitBubbles.map((tech, i) => (
+                  <div key={tech} className={`orbit-bubble git-bubble git-bubble-${i}`}>{tech}</div>
+                ))}
+              </div>
+              <p className="orbit-title">Development</p>
+            </div>
+
           </div>
-        </div>
+        </div> */}
+
+        <div className="orbit-container orbit-git">
+                <div className="orbit-ring" />
+                <div className="orbit-ring-inner" />
+                <div className="orbit-center orbit-center-git">
+                  <span className="orbit-center-icon">🔀</span>
+                  <span className="orbit-center-label">Git</span>
+                </div>
+
+                {/* small floating aws badge, behind the rings */}
+            
+    {floatingBadges.map((badge, i) => (
+                  <div
+                    key={badge.name}
+                    className={`orbit-float-badge orbit-float-badge--${badge.color}`}
+                    style={{
+                      left: `${badge.left}px`,
+                      top: `${badge.top}px`,
+                      animationDuration: `${badge.duration}s`,
+                    }}
+                  >
+                    {badge.name}
+                  </div>
+                ))}
+                {gitBubbles.map((tech, i) => (
+                  <div key={tech} className={`orbit-bubble git-bubble git-bubble-${i}`}>{tech}</div>
+                ))}
+              </div>
       </div>
     </section>
   )

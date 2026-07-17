@@ -13,34 +13,39 @@ const Hero = () => {
 
       <div className="container hero-content">
         <div className="hero-text">
-          <p className="hero-greeting">Hello!</p>
+          <p className="hero-greeting">Hello, I'm</p>
           <h1 className="hero-heading">
-            I am <span className="highlight animate-[text-fadeIn_2.1s_ease-in_infinite]" >Keerthiga U,</span>
-            <br />WEB Developer
+            <span className="highlight">Keerthiga U</span>
           </h1>
+          <h2 className="hero-role">Frontend &amp; Full-Stack Developer</h2>
           <p className="hero-description">
-          3+ years of hands-on experience in frontend and full-stack web development. 
-Skilled in building responsive, high-performance web apps with React JS, 
-JavaScript, PHP, and WordPress. Proven track record of resolving 500+ bugs, 
-leading projects end-to-end, and collaborating with cross-functional teams.
-
+            3+ years of experience building responsive, high-performance web applications
+            with <strong>React JS</strong>, <strong>JavaScript</strong>, <strong>PHP</strong>,
+            and <strong>WordPress</strong>. Proven track record of leading projects end-to-end,
+            resolving 500+ production bugs, and shipping clean, user-centric UI.
           </p>
           <div className="hero-buttons">
-           <button
-  className="btn-primary"
-  onClick={() => {
-    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })
-  }}
->
-  Hire me
-</button>
-            {/* <button className="btn-outline">Hire me</button> */}
+            <a
+              href="/Keerthiga_U_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              📄 Download Resume
+            </a>
+            <button
+              className="btn-outline"
+              onClick={() => {
+                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              View Projects
+            </button>
           </div>
         </div>
 
         <div className="hero-image">
-          {/* Replace src with your actual photo */}
-          <img src={myImg} alt="Profile" />
+          <img src={myImg} alt="Keerthiga U - Frontend Developer" />
         </div>
       </div>
     </section>

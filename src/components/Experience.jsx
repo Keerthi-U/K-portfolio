@@ -5,63 +5,48 @@ import workexp1 from '../assets/Image/work-exp1.png'
 const Experience = () => {
   return (
     <section className="experience" id="experience">
-      <div className="container ">
+      <div className="container">
+        <h2 className="section-title">Work Experience</h2>
+
+        {/* Job 1 */}
         <div className="experience-grid">
-  <div className="exp-illustration">
-          {/* Replace with your illustration */}
-          <img src={workexp} alt="Experience" />
+          <div className="exp-illustration">
+            <img src={workexp} alt="Colan Infotech" />
+          </div>
+          <div className="exp-content">
+            <h3 className="exp-company">Colan Infotech Private Limited</h3>
+            <p className="exp-role">Software Engineer</p>
+            <p className="exp-years">Jan 2021 — Apr 2024 · Vellore, TN</p>
+            <ul className="exp-bullets">
+              <li>Led frontend development for VirtualStaff, IMF, and LightUp projects — delivering responsive, cross-device compatible applications.</li>
+              <li>Managed end-to-end WooCommerce website development from scratch through UAT, including change requests and defect resolution.</li>
+              <li>Identified and resolved <strong>500+ production bugs</strong> across HTML/CSS, JavaScript/jQuery, and PHP layers.</li>
+              <li>Optimized WordPress websites for SEO and page speed, significantly improving load times and user engagement.</li>
+              <li>Created and optimized email templates, conducted code reviews, and mentored junior developers.</li>
+              <li>Collaborated with designers and QA teams to deliver high-quality applications aligned with project deadlines.</li>
+            </ul>
+          </div>
         </div>
-           <div className="exp-content">
-          <div className="shape-circle" style={{ width: 50, height: 50, top: '10%', left: '-5%', position: 'absolute', opacity: 0.3 }} />
-          <div className="shape-square" style={{ width: 22, height: 22, top: '20%', right: '5%', position: 'absolute', opacity: 0.3 }} />
 
-          <h2 className="section-title">Experience</h2>
-          <div className="edu-details">
-              <h3 className="edu-title">Colan infotech private limited</h3>
-                <p className="edu-years">2021 jan - 2024 april</p>
-              
-            
-              </div>
-          <p className="exp-description">
-          Experienced PHP, WordPress, and React Developer with expertise in developing, maintaining, and optimizing web applications and WooCommerce websites. Skilled in bug fixing, feature development, performance optimization, API integration, and responsive UI development. Strong experience collaborating with cross-functional teams to deliver high-quality, user-friendly solutions and ensure smooth project deployment and maintenance.
-
-          </p>
-         
-        </div>
-        </div>
-      
-
-          <div className="experience-grid">
-    
-
- <div className="exp-content">
-          <div className="shape-circle" style={{ width: 50, height: 50, top: '10%', left: '-5%', position: 'absolute', opacity: 0.3 }} />
-          <div className="shape-square" style={{ width: 22, height: 22, top: '20%', right: '5%', position: 'absolute', opacity: 0.3 }} />
-
-          <div className="edu-details">
-              <h3 className="edu-title"><p>vSplash Techlabs Private Limited</p></h3>
-                
-              
-            <p className="edu-years">2025 Nov - 2026 Feb</p>
-              </div>
-          <p className="exp-description">
-        Worked extensively on WordPress website development and maintenance, creating responsive and user-friendly websites using HTML, CSS, JavaScript, and WordPress. Experienced in theme customization, plugin integration, bug fixing, and website optimization. Focused on improving functionality, performance, and user experience while ensuring smooth website operation.
-
-
-          </p>
-        
-        </div>
-           <div className="exp-illustration">
-          {/* Replace with your illustration */}
-          <img src={workexp1} alt="Experience" />
+        {/* Job 2 */}
+        <div className="experience-grid reverse">
+          <div className="exp-content">
+            <h3 className="exp-company">vSplash Techlabs Private Limited</h3>
+            <p className="exp-role">WordPress Developer</p>
+            <p className="exp-years">Nov 2025 — Feb 2026 · Remote</p>
+            <ul className="exp-bullets">
+              <li>Developed and customized WordPress websites with responsive design using HTML, CSS, and JavaScript.</li>
+              <li>Performed theme customization, plugin integration, and UI/UX enhancements for improved user experience.</li>
+              <li>Resolved design and functionality bugs to ensure smooth and stable website performance.</li>
+            </ul>
+          </div>
+          <div className="exp-illustration">
+            <img src={workexp1} alt="vSplash" />
+          </div>
         </div>
       </div>
-       
-      </div>
-     
     </section>
   )
 }
 
 export default Experience
-  

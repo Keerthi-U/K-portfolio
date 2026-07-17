@@ -216,7 +216,7 @@ const ProjectsPage = () => {
             </p>
             <div className="pp-hero-btns">
               <a href="https://github.com" target="_blank" rel="noreferrer" className="btn-primary">
-                GitHub Profile
+                GitHub Profile ↗
               </a>
               <a href="#pp-grid" className="btn-outline">View Projects</a>
             </div>
@@ -296,7 +296,15 @@ const ProjectsPage = () => {
         <div className="container pp-cta-inner">
           <h2>Want to work together?</h2>
           <p>I'm open to freelance projects and full-time opportunities.</p>
-          <button className="btn-primary">Contact Me</button>
+          <button
+            className="btn-primary"
+            onClick={() => {
+              window.location.hash = '#/'
+              setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)
+            }}
+          >
+            Contact Me
+          </button>
           <p className="footer-contact ptt">+91 7010729077</p>
         </div>
       </div>

@@ -4,8 +4,8 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1fr;   /* left skill bars fixed, orbits use the rest */
+  gap: 60px;
   align-items: center;
 }
 
@@ -49,108 +49,229 @@
   text-align: right;
 }
 
-/* ── Circle layout ── */
-.bubbles-container {
-  position: relative;
-  width: 360px;
-  height: 360px;
-  margin: 0 auto;
+/* ════════════════════════════════════════════════════════
+   DUAL ORBITS — Two separate circles SIDE BY SIDE (left + right)
+   ════════════════════════════════════════════════════════ */
+.dual-orbits {
+  display: flex;
+  flex-direction: row;          /* always side by side */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  flex-wrap: nowrap;
 }
 
-/* Dashed ring */
-.bubbles-container::before {
-  content: '';
+.orbit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orbit-title {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+/* ── Orbit Container ── */
+.orbit-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 6rem auto 0rem;
+}
+
+.orbit-ring {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   border: 2px dashed rgba(45, 212, 191, 0.25);
 }
 
-/* Center Git bubble */
-.bubble-center {
+.orbit-ring-aws {
+  border-color: rgba(255, 153, 0, 0.25);
+}
+
+/* ── Center Bubbles ── */
+.orbit-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: var(--teal);
-  color: #0a0a0f;
   border-radius: 50%;
-  width: 64px;
-  height: 64px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
   z-index: 2;
   animation: floatCenter 3s ease-in-out infinite;
 }
 
-/* Outer bubbles */
-.bubble {
+.orbit-center-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.orbit-center-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Git center — teal */
+.orbit-center-git {
+  width: 76px;
+  height: 76px;
+  background: var(--teal);
+  color: #0a0a0f;
+}
+
+/* AWS center — orange */
+.orbit-center-aws {
+  width: 76px;
+  height: 76px;
+  background: #ff9900;
+  color: #fff;
+}
+
+/* Small floating "aws" badge inside the Git ring */
+.orbit-badge-aws {
   position: absolute;
+  left: 160px;
+  top: 90px;
+  transform: translate(-50%, -50%);
   background: var(--teal-bg);
   color: var(--teal);
   border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  z-index: 1;
+  animation: floatBadge 3.4s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50%      { transform: translate(-50%, -62%); }
+}
+
+@media (max-width: 768px) {
+  .orbit-badge-aws {
+    left: 130px;
+    top: 74px;
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+}
+/* ── Orbit Bubbles (outer) ── */
+.orbit-bubble {
+  position: absolute;
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 1rem;
-  padding: 28px 24px;
-  min-width: 90px;
+  font-size: 0.78rem;
+  padding: 8px 12px;
+  min-width: 100px;
+  height: 71px;
   text-align: center;
   white-space: nowrap;
   transform: translate(-50%, -50%);
   cursor: default;
 }
 
-/* 7 bubbles equally spaced: 360/7 = 51.43° each, starting from top (-90°) */
-.bubble-0 { left: 180px; top:  25px; animation: float0 3.0s ease-in-out infinite; } /* HTML       0°   */
-.bubble-1 { left: 301px; top:  83px; animation: float1 3.4s ease-in-out infinite; } /* CSS        51°  */
-.bubble-2 { left: 331px; top: 214px; animation: float2 2.8s ease-in-out infinite; } /* Javascript 103° */
-.bubble-3 { left: 247px; top: 320px; animation: float3 3.6s ease-in-out infinite; } /* Bootstrap  154° */
-.bubble-4 { left: 113px; top: 320px; animation: float4 3.2s ease-in-out infinite; } /* React js   206° */
-.bubble-5 { left:  29px; top: 214px; animation: float5 2.6s ease-in-out infinite; } /* PHP        257° */
-.bubble-6 { left:  59px; top:  83px; animation: float6 3.8s ease-in-out infinite; } /* Wordpress  309° */
+/* ── Git Orbit Bubbles (teal) ── */
+/* 7 bubbles, 360/7 ≈ 51.4°, r=150, cx=cy=160 (320px container) */
+.git-bubble {
+  background: var(--teal-bg);
+  color: var(--teal);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
 
-/* Each bubble floats outward from center in its own direction */
+.git-bubble-0 { left: 160px; top:  10px; animation: float0 3.0s ease-in-out infinite; } /* HTML       0°   */
+.git-bubble-1 { left: 277px; top:  67px; animation: float1 3.4s ease-in-out infinite; } /* CSS        51°  */
+.git-bubble-2 { left: 306px; top: 193px; animation: float2 2.8s ease-in-out infinite; } /* JavaScript 103° */
+.git-bubble-3 { left: 225px; top: 295px; animation: float3 3.6s ease-in-out infinite; } /* Bootstrap  154° */
+.git-bubble-4 { left:  95px; top: 295px; animation: float4 3.2s ease-in-out infinite; } /* React JS   206° */
+.git-bubble-5 { left:  14px; top: 193px; animation: float5 2.6s ease-in-out infinite; } /* PHP        257° */
+.git-bubble-6 { left:  43px; top:  67px; animation: float6 3.8s ease-in-out infinite; } /* WordPress  309° */
+
+/* ── AWS Orbit Bubbles (orange) ── */
+/* 4 bubbles, 360/4 = 90°, r=150, cx=cy=160 (320px container) */
+.aws-bubble {
+  background: rgba(255, 153, 0, 0.1);
+  color: #ff9900;
+  border: 1px solid rgba(255, 153, 0, 0.3);
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aws-bubble-0 { left: 310px; top: 160px; animation: float2 3.0s ease-in-out infinite; } /* S3            right   */
+.aws-bubble-1 { left: 160px; top: 310px; animation: float4 3.2s ease-in-out infinite; } /* GitHub Actions bottom */
+.aws-bubble-2 { left:  10px; top: 160px; animation: float5 2.8s ease-in-out infinite; } /* EC2           left    */
+.aws-bubble-3 { left: 160px; top:  10px; animation: float0 3.6s ease-in-out infinite; } /* Lambda        top     */
+
+/* Learning badge */
+.learning-badge {
+  font-size: 0.5rem;
+  font-weight: 500;
+  background: rgba(255, 153, 0, 0.15);
+  color: #cc7a00;
+  padding: 1px 5px;
+  border-radius: 50px;
+  border: 1px dashed rgba(255, 153, 0, 0.4);
+}
+
+/* ── Animations ── */
 @keyframes floatCenter {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50%       { transform: translate(-50%, -54%) scale(1.08); }
 }
 @keyframes float0 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-50%, -68%); }   /* up */
+  50%       { transform: translate(-50%, -68%); }
 }
 @keyframes float1 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-34%, -64%); }   /* up-right */
+  50%       { transform: translate(-34%, -64%); }
 }
 @keyframes float2 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-30%, -50%); }   /* right */
+  50%       { transform: translate(-30%, -50%); }
 }
 @keyframes float3 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-34%, -34%); }   /* down-right */
+  50%       { transform: translate(-34%, -34%); }
 }
 @keyframes float4 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-50%, -30%); }   /* down */
+  50%       { transform: translate(-50%, -30%); }
 }
 @keyframes float5 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-66%, -34%); }   /* down-left */
+  50%       { transform: translate(-66%, -34%); }
 }
 @keyframes float6 {
   0%, 100% { transform: translate(-50%, -50%); }
-  50%       { transform: translate(-66%, -64%); }   /* up-left */
+  50%       { transform: translate(-66%, -64%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bubble, .bubble-center { animation: none; }
+  .orbit-bubble, .orbit-center { animation: none; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  /* Orbits get a bit tighter on medium screens but stay side by side */
+  .dual-orbits {
+    gap: 40px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -158,17 +279,124 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .bubbles-container {
-    width: 280px;
-    height: 280px;
+  .dual-orbits {
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  /* Recalculate for r=120, cx=cy=140 */
-  .bubble-0 { left: 140px; top:  20px; }
-  .bubble-1 { left: 234px; top:  65px; }
-  .bubble-2 { left: 258px; top: 167px; }
-  .bubble-3 { left: 193px; top: 250px; }
-  .bubble-4 { left:  88px; top: 250px; }
-  .bubble-5 { left:  22px; top: 167px; }
-  .bubble-6 { left:  46px; top:  65px; }
-  .bubble-center { width: 52px; height: 52px; font-size: 0.75rem; }
+  .orbit-container {
+    width: 260px;
+    height: 260px;
+  }
+  /* Git: r=120, cx=cy=130 (260px) */
+  .git-bubble { font-size: 0.7rem; padding: 6px 10px; min-width: 84px; height: 60px; }
+  .git-bubble-0 { left: 130px; top:  10px; }
+  .git-bubble-1 { left: 224px; top:  56px; }
+  .git-bubble-2 { left: 247px; top: 157px; }
+  .git-bubble-3 { left: 182px; top: 238px; }
+  .git-bubble-4 { left:  78px; top: 238px; }
+  .git-bubble-5 { left:  13px; top: 157px; }
+  .git-bubble-6 { left:  36px; top:  56px; }
+  /* AWS: r=120, cx=cy=130 (260px) */
+  .aws-bubble { font-size: 0.7rem; padding: 6px 10px; min-width: 84px; height: 60px; }
+  .aws-bubble-0 { left: 250px; top: 130px; }
+  .aws-bubble-1 { left: 130px; top: 250px; }
+  .aws-bubble-2 { left:  10px; top: 130px; }
+  .aws-bubble-3 { left: 130px; top:  10px; }
+  .orbit-center {
+    width: 60px;
+    height: 60px;
+  }
+  .orbit-center-icon { font-size: 1.1rem; }
+  .orbit-center-label { font-size: 0.65rem; }
+}
+.orbit-float-badge {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0.85);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  z-index: 1;
+  opacity: 0.9;
+  animation-name: floatBadge;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.orbit-float-badge--teal {
+  background: rgba(45, 212, 191, 0.06);
+  color: rgb(17 191 169);
+  border: 1px solid rgb(22 229 203 / 68%);
+}
+
+.orbit-float-badge--orange {
+  background: rgba(255, 153, 0, 0.08);
+  color: #ff9900;
+  border: 1px solid rgba(255, 153, 0, 0.4);
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.85); }
+  50%      { transform: translate(-50%, -62%) scale(0.85); }
+}
+
+@media (max-width: 768px) {
+  .orbit-float-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    transform: translate(-50%, -50%) scale(0.75);
+  }
+}
+.orbit-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px dashed rgba(45, 212, 191, 0.25);
+  z-index: 3;
+}
+
+.orbit-ring-inner {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 27%;
+  left: 28%;
+  border-radius: 50%;
+  border: 2px dashed rgba(45, 212, 191, 0.25);
+  z-index: 3;
+}
+
+.orbit-badge-aws {
+  position: absolute;
+  left: 160px;
+  top: 90px;
+  transform: translate(-50%, -50%) scale(0.85);
+  background: rgba(45, 212, 191, 0.06);
+  color: rgb(17 191 169);
+  border: 1px solid rgb(22 229 203 / 68%);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  z-index: 1;
+  opacity: 0.9;
+  animation: floatBadge 3.4s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.85); }
+  50%      { transform: translate(-50%, -62%) scale(0.85); }
+}
+
+@media (max-width: 768px) {
+  .orbit-badge-aws {
+    left: 130px;
+    top: 73px;
+    font-size: 0.75rem;
+  }
+  .orbit-ring-inner {
+    width: 122px;
+    height: 122px;
+  }
 }

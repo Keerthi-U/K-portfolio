@@ -3,15 +3,15 @@ import graduation from '../assets/Image/graduation.png'
 const educationItems = [
   {
     id: 1,
-    years: '2013-2016',
-    title: 'B.sc [Computer Science]',
-    description: 'DKM Womens College Vellore.',
+    years: '2013 – 2016',
+    title: 'B.Sc Computer Science',
+    description: 'DKM College for Women, Vellore.',
   },
   {
     id: 2,
-    years: '2014-2015',
-    title: 'Master of Computer Application',
-    description: 'C. Abdul Hakeem College of Engineering & Technology.',
+    years: '2016 – 2018',
+    title: 'Master of Computer Application (MCA)',
+    description: 'C. Abdul Hakeem College of Engineering & Technology, Vellore.',
   },
 ]
 
